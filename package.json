@@ -1,0 +1,35 @@
+{
+    "name": "component.properties",
+    "description": "a private secure bag for class properties",
+    "version": "1.0.0",
+    "author": "Marchuan Van Der Merwe",
+    "type": "module",
+    "main": "registry.mjs",
+    "license": "LGPL-3.0-or-later",
+    "engines": {
+        "node": "18.16.1",
+        "npm": "9.5.1"
+    },
+    "keywords": [
+        "properties",
+        "class",
+        "bag"
+    ],
+    "files": [
+        "lib"
+    ],
+    "scripts": {
+        "test": "node specs/index.mjs"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/marchuanv/component.properties.git"
+    },
+    "bugs": {
+        "url": "https://github.com/marchuanv/component.properties/issues"
+    },
+    "homepage": "https://github.com/marchuanv/component.properties#readme",
+    "dependencies": {
+        "jasmine": "^5.1.0"
+    }
+}
