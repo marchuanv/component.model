@@ -5,7 +5,7 @@ class ContextRoot extends Properties {
         return super.get('Id', String.prototype);
     }
     set Id(value) {
-        super.set('Id', value)
+        super.set('Id', value, false, true);
     }
 }
 
@@ -14,7 +14,7 @@ class ContextA extends Properties {
         return super.get('Id', String.prototype);
     }
     set Id(value) {
-        super.set('Id', value)
+        super.set('Id', value, false, true);
     }
 }
 class ContextB extends Properties {
@@ -22,7 +22,7 @@ class ContextB extends Properties {
         return super.get('Id', String.prototype);
     }
     set Id(value) {
-        super.set('Id', value)
+        super.set('Id', value, false, true);
     }
 }
 class ContextC extends Properties {
@@ -30,7 +30,7 @@ class ContextC extends Properties {
         return super.get('Id', String.prototype);
     }
     set Id(value) {
-        super.set('Id', value)
+        super.set('Id', value, false, true);
     }
 }
 
@@ -39,7 +39,7 @@ class PropertiesTest extends Properties {
         return super.get('Id', String.prototype);
     }
     set Id(value) {
-        super.set('Id', value)
+        super.set('Id', value, false, true);
     }
 }
 class PropertiesTestHierarchy extends Properties {
@@ -47,7 +47,7 @@ class PropertiesTestHierarchy extends Properties {
         return super.get('propertiesTest', PropertiesTest.prototype);
     }
     set propertiesTest(value) {
-        super.set('propertiesTest', value)
+        super.set('propertiesTest', value, false, true);
     }
 }
 
@@ -58,7 +58,7 @@ describe('when properties change', () => {
         properties.Id = actualValue;
         expect(properties.Id).toBe(actualValue);
         let firedCount = 0;
-        properties.onSet('Id', (value) => {
+        properties.onSet('Id', false, false, (value) => {
             firedCount = firedCount + 1;
             return actualValue;
         });
@@ -73,7 +73,7 @@ describe('when properties change', () => {
         properties.Id = actualValue;
         expect(properties.Id).toBe(actualValue);
         let firedCount = 0;
-        properties.onSet('Id', (value) => {
+        properties.onSet('Id', false, false, (value) => {
             firedCount = firedCount + 1;
             return actualValue;
         });
