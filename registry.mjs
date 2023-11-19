@@ -7,3 +7,4 @@ export { Bag } from './lib/bag.mjs';
 export { Jasmine, Properties, Relation };
 export * as url from 'url';
 export { Specs } from 'utils';
+export { BagItem } from './lib/bag.item.mjs';
