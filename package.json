@@ -30,6 +30,7 @@
     },
     "homepage": "https://github.com/marchuanv/component.properties#readme",
     "dependencies": {
-        "jasmine": "^5.1.0"
+        "jasmine": "^5.1.0",
+        "utils": "marchuanv/utils"
     }
 }
