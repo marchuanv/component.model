@@ -1,96 +1,68 @@
 import { Properties } from '../registry.mjs';
-
-class ContextRoot extends Properties {
+class Context extends Properties {
     get Id() {
-        return super.get('Id', String.prototype);
+        return super.get({ Id: null }, String.prototype);
     }
     set Id(value) {
-        super.set('Id', value, false, true);
+        super.set({ Id: value }, false, true);
     }
 }
-
-class ContextA extends Properties {
-    get Id() {
-        return super.get('Id', String.prototype);
-    }
-    set Id(value) {
-        super.set('Id', value, false, true);
-    }
-}
-class ContextB extends Properties {
-    get Id() {
-        return super.get('Id', String.prototype);
-    }
-    set Id(value) {
-        super.set('Id', value, false, true);
-    }
-}
-class ContextC extends Properties {
-    get Id() {
-        return super.get('Id', String.prototype);
-    }
-    set Id(value) {
-        super.set('Id', value, false, true);
-    }
-}
-
-class PropertiesTest extends Properties {
-    get Id() {
-        return super.get('Id', String.prototype);
-    }
-    set Id(value) {
-        super.set('Id', value, false, true);
-    }
-}
-class PropertiesTestHierarchy extends Properties {
-    get propertiesTest() {
-        return super.get('propertiesTest', PropertiesTest.prototype);
-    }
-    set propertiesTest(value) {
-        super.set('propertiesTest', value, false, true);
-    }
-}
+class ContextRoot extends Context { }
+class ContextA extends Context { }
+class ContextB extends Context { }
+class ContextC extends Context { }
 
 describe('when properties change', () => {
     it('should sync data', () => {
-        const properties = new PropertiesTest();
+        const contextRoot = new ContextRoot();
         const actualValue = 'ef7cbdeb-6536-4e38-a9e1-cc1acdd00e7d';
-        properties.Id = actualValue;
-        expect(properties.Id).toBe(actualValue);
+        contextRoot.Id = actualValue;
+        expect(contextRoot.Id).toBe(actualValue);
         let firedCount = 0;
-        properties.onSet('Id', false, false, (value) => {
+        contextRoot.onSet({ Id: null }, false, false, (value) => {
             firedCount = firedCount + 1;
             return actualValue;
         });
         const expectedValue = '5a0bf50b-6ba5-4570-984c-cdcada1d19f0';
-        properties.Id = expectedValue; //onChange
+        contextRoot.Id = expectedValue; //onChange
         expect(firedCount).toBe(1);
-        expect(properties.Id).toBe(actualValue);
+        expect(contextRoot.Id).toBe(actualValue);
     });
     it('should sync data within context', () => {
-        const properties = new PropertiesTest();
+        const contextRoot = new ContextRoot();
         const actualValue = 'b4ad82a4-d76e-4b36-bc4d-f0ca5386622f';
-        properties.Id = actualValue;
-        expect(properties.Id).toBe(actualValue);
+        contextRoot.Id = actualValue;
+        expect(contextRoot.Id).toBe(actualValue);
         let firedCount = 0;
-        properties.onSet('Id', false, false, (value) => {
+        contextRoot.onSet({ Id: null }, false, false, (value) => {
             firedCount = firedCount + 1;
             return actualValue;
         });
         const expectedValue = '1deccbb7-b859-4e77-a1b5-7b5b58ce3b31';
-        properties.Id = expectedValue; //onChange
+        contextRoot.Id = expectedValue; //onChange
         expect(firedCount).toBe(1);
-        expect(properties.Id).toBe(actualValue);
+        expect(contextRoot.Id).toBe(actualValue);
     });
     it('should serialise', () => {
-        const propertiesTestHierarchy = new PropertiesTestHierarchy();
-        const propertiesTest = new PropertiesTest();
-        propertiesTestHierarchy.propertiesTest = propertiesTest;
-        const actualValue = 'ef7cbdeb-6536-4e38-a9e1-cc1acdd00e7d';
-        propertiesTest.Id = actualValue;
-        const serialise = propertiesTestHierarchy.serialise();
-        expect(propertiesTest.Id).toBe(actualValue);
-        expect(serialise).toBeDefined();
+
+        const expectedId = '484db6d7-7c17-46ce-9b57-888ce835edf7';
+        const expectedId1 = 'ef7cbdeb-6536-4e38-a9e1-cc1acdd00e7d';
+        const expectedId2 = '00584b74-bb02-4284-b40a-5c69c928cba9';
+
+        const contextRoot = new ContextRoot();
+        contextRoot.Id = expectedId;
+
+        const contextA = new ContextA({ name: 'contextRoot', value: contextRoot });
+        contextA.Id = expectedId1;
+
+        const contextB = new ContextB({ name: 'contextRoot', value: contextRoot });
+        contextB.Id = expectedId2;
+
+        const contextASerialised = contextA.serialise();
+        expect(contextASerialised).toBe(JSON.stringify({ contextRoot: { Id: expectedId }, Id: expectedId2 }));
+
+        const contextBSerialised = contextB.serialise();
+        expect(contextBSerialised).toBe(JSON.stringify({ contextRoot: { Id: expectedId }, Id: expectedId2 }));
     });
     it('should share properties with same context', () => {
 
