@@ -88,4 +88,15 @@ describe('when properties change', () => {
         expect(contextB.Id).toBe(contextC.Id); //they share a context
         expect(contextC.Id).toBe(contextB.Id); //they share a context
     });
+    fit('should clone', () => {
+
+        const expectedId = '95e3435e-afa1-4f2d-8de8-6aa16373a375';
+
+        const contextA = new ContextA();
+        contextA.Id = expectedId;
+
+        const clonedContextA = contextA.clone(ContextA);
+
+        expect(clonedContextA).toBeInstanceOf(ContextA);
+    });
 });
