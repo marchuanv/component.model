@@ -11,7 +11,7 @@ class ContextRoot extends Context {}
 class ContextA extends Context {
     constructor({ contextRoot }) {
         const ctorParams = [
-            new CtorParam('contextRoot', contextRoot, true)
+            new CtorParam('contextRoot', contextRoot, true, true, true),
         ];
         super(ctorParams);
     }
@@ -20,12 +20,12 @@ class ContextB extends Context {
     constructor({ contextRoot, contextA }) {
         if (contextRoot) {
             super([
-                new CtorParam('contextRoot', contextRoot, true)
+                new CtorParam('contextRoot', contextRoot, true, true, true),
             ]);
         }
         if (contextA) {
             super([
-                new CtorParam('contextA', contextA, true)
+                new CtorParam('contextA', contextA, true, true, true)
             ]);
         }
     }
@@ -33,7 +33,7 @@ class ContextB extends Context {
 class ContextC extends Context {
     constructor({ contextA }) {
         const ctorParams = [
-            new CtorParam('contextA', contextA, true)
+            new CtorParam('contextA', contextA, true, true, true)
         ];
         super(ctorParams);
     }
@@ -41,9 +41,9 @@ class ContextC extends Context {
 class ContextD extends Context {
     constructor(param1, param2 = 'HelloWorldAgain', param3 = { param3: 'GoodbyeWorld' }) {
         const ctorParams = [
-            new CtorParam('param1', param1),
-            new CtorParam('param2', param2),
-            new CtorParam('param3', param3)
+            new CtorParam('param1', param1, true, true, false),
+            new CtorParam('param2', param2, true, true, false),
+            new CtorParam('param3', param3, true, true, false)
         ];
         super(ctorParams);
     }
