@@ -1,4 +1,4 @@
-import { Properties } from '../registry.mjs';
+import { CtorParam, Properties } from '../registry.mjs';
 class Context extends Properties {
     get Id() {
         return super.get({ Id: null }, String.prototype);
@@ -7,10 +7,47 @@ class Context extends Properties {
         super.set({ Id: value }, false, true);
     }
 }
-class ContextRoot extends Context { }
-class ContextA extends Context { }
-class ContextB extends Context { }
-class ContextC extends Context { }
+class ContextRoot extends Context {}
+class ContextA extends Context {
+    constructor({ contextRoot }) {
+        const ctorParams = [
+            new CtorParam('contextRoot', contextRoot, true)
+        ];
+        super(ctorParams);
+    }
+}
+class ContextB extends Context {
+    constructor({ contextRoot, contextA }) {
+        if (contextRoot) {
+            super([
+                new CtorParam('contextRoot', contextRoot, true)
+            ]);
+        }
+        if (contextA) {
+            super([
+                new CtorParam('contextA', contextA, true)
+            ]);
+        }
+    }
+}
+class ContextC extends Context {
+    constructor({ contextA }) {
+        const ctorParams = [
+            new CtorParam('contextA', contextA, true)
+        ];
+        super(ctorParams);
+    }
+}
+class ContextD extends Context {
+    constructor(param1, param2 = 'HelloWorldAgain', param3 = { param3: 'GoodbyeWorld' }) {
+        const ctorParams = [
+            new CtorParam('param1', param1),
+            new CtorParam('param2', param2),
+            new CtorParam('param3', param3)
+        ];
+        super(ctorParams);
+    }
+}
 
 describe('when properties change', () => {
     it('should sync data', () => {
@@ -52,10 +89,10 @@ describe('when properties change', () => {
         const contextRoot = new ContextRoot();
         contextRoot.Id = expectedId;
 
-        const contextA = new ContextA({ name: 'contextRoot', value: contextRoot });
+        const contextA = new ContextA({ contextRoot });
         contextA.Id = expectedId1;
 
-        const contextB = new ContextB({ name: 'contextRoot', value: contextRoot });
+        const contextB = new ContextB({ contextRoot });
         contextB.Id = expectedId2;
 
         const contextASerialised = contextA.serialise();
@@ -66,21 +103,21 @@ describe('when properties change', () => {
     });
     it('should share properties with same context', () => {
 
-        const context = new ContextRoot();
-        context.Id = '653ef45a-14ba-400b-a1a9-c0695d6b1f06';
+        const contextRoot = new ContextRoot();
+        contextRoot.Id = '653ef45a-14ba-400b-a1a9-c0695d6b1f06';
 
-        const contextA = new ContextA({ name: 'contextRoot', value: context });
+        const contextA = new ContextA({ contextRoot });
         contextA.Id = '250b70e1-fe1f-47eb-8185-04278ddef1bc';
 
-        const contextB = new ContextB({ name: 'contextA', value: contextA });
+        const contextB = new ContextB({ contextA });
         contextB.Id = 'c0785886-6652-4308-aab5-b96b15eb942e';
 
-        const contextC = new ContextC({ name: 'contextA', value: contextA });
+        const contextC = new ContextC({ contextA });
         contextC.Id = 'a70b6d9a-6e3b-40d3-a1b5-08327d1cd6e2';
 
-        expect(context.Id).not.toBe(contextA.Id);
-        expect(context.Id).not.toBe(contextB.Id);
-        expect(context.Id).not.toBe(contextC.Id);
+        expect(contextRoot.Id).not.toBe(contextA.Id);
+        expect(contextRoot.Id).not.toBe(contextB.Id);
+        expect(contextRoot.Id).not.toBe(contextC.Id);
 
         expect(contextA.Id).not.toBe(contextB.Id);
         expect(contextA.Id).not.toBe(contextC.Id);
@@ -88,15 +125,15 @@ describe('when properties change', () => {
         expect(contextB.Id).toBe(contextC.Id); //they share a context
         expect(contextC.Id).toBe(contextB.Id); //they share a context
     });
-    fit('should clone', () => {
+    it('should clone', () => {
 
         const expectedId = '95e3435e-afa1-4f2d-8de8-6aa16373a375';
 
-        const contextA = new ContextA();
+        const contextA = new ContextD();
         contextA.Id = expectedId;
 
-        const clonedContextA = contextA.clone(ContextA);
+        const clonedContextA = contextA.clone(ContextD);
 
-        expect(clonedContextA).toBeInstanceOf(ContextA);
+        expect(clonedContextA).toBeInstanceOf(ContextD);
     });
 });
