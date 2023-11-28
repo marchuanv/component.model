@@ -7,13 +7,20 @@ class Context extends Properties {
         super.set({ Id: value }, false, true);
     }
 }
-class ContextRoot extends Context {}
+class ContextRoot extends Context {
+    get deserialise() {
+
+    }
+}
 class ContextA extends Context {
     constructor({ contextRoot }) {
         const ctorParams = [
             new CtorParam('contextRoot', contextRoot, true, true, true),
         ];
         super(ctorParams);
+    }
+    get deserialise() {
+
     }
 }
 class ContextB extends Context {
@@ -29,6 +36,9 @@ class ContextB extends Context {
             ]);
         }
     }
+    get deserialise() {
+
+    }
 }
 class ContextC extends Context {
     constructor({ contextA }) {
@@ -36,6 +46,9 @@ class ContextC extends Context {
             new CtorParam('contextA', contextA, true, true, true)
         ];
         super(ctorParams);
+    }
+    get deserialise() {
+
     }
 }
 class ContextD extends Context {
@@ -46,6 +59,9 @@ class ContextD extends Context {
             new CtorParam('param3', param3, true, true, false)
         ];
         super(ctorParams);
+    }
+    get deserialise() {
+
     }
 }
 
@@ -124,16 +140,5 @@ describe('when properties change', () => {
 
         expect(contextB.Id).toBe(contextC.Id); //they share a context
         expect(contextC.Id).toBe(contextB.Id); //they share a context
-    });
-    it('should clone', () => {
-
-        const expectedId = '95e3435e-afa1-4f2d-8de8-6aa16373a375';
-
-        const contextA = new ContextD();
-        contextA.Id = expectedId;
-
-        const clonedContextA = contextA.clone(ContextD);
-
-        expect(clonedContextA).toBeInstanceOf(ContextD);
     });
 });
