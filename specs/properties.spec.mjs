@@ -8,7 +8,7 @@ class Context extends Properties {
     }
 }
 class ContextRoot extends Context {
-    get deserialise() {
+    get ctorParams() {
 
     }
 }
@@ -19,7 +19,7 @@ class ContextA extends Context {
         ];
         super(ctorParams);
     }
-    get deserialise() {
+    get ctorParams() {
 
     }
 }
@@ -36,7 +36,7 @@ class ContextB extends Context {
             ]);
         }
     }
-    get deserialise() {
+    get ctorParams() {
 
     }
 }
@@ -47,7 +47,7 @@ class ContextC extends Context {
         ];
         super(ctorParams);
     }
-    get deserialise() {
+    get ctorParams() {
 
     }
 }
@@ -60,7 +60,7 @@ class ContextD extends Context {
         ];
         super(ctorParams);
     }
-    get deserialise() {
+    get ctorParams() {
 
     }
 }
