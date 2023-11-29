@@ -8,7 +8,7 @@ class Context extends Properties {
     }
 }
 class ContextRoot extends Context {
-    get ctorParams() {
+    static ctor() {
 
     }
 }
@@ -19,7 +19,7 @@ class ContextA extends Context {
         ];
         super(ctorParams);
     }
-    get ctorParams() {
+    get ctor() {
 
     }
 }
@@ -36,7 +36,7 @@ class ContextB extends Context {
             ]);
         }
     }
-    get ctorParams() {
+    static ctor() {
 
     }
 }
@@ -47,7 +47,7 @@ class ContextC extends Context {
         ];
         super(ctorParams);
     }
-    get ctorParams() {
+    static ctor() {
 
     }
 }
@@ -60,7 +60,7 @@ class ContextD extends Context {
         ];
         super(ctorParams);
     }
-    get ctorParams() {
+    static ctor() {
 
     }
 }
