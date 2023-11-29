@@ -19,7 +19,7 @@ class ContextA extends Context {
         ];
         super(ctorParams);
     }
-    get ctor() {
+    static ctor() {
 
     }
 }
