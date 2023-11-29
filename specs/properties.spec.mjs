@@ -1,5 +1,10 @@
-import { CtorParam, Properties } from '../registry.mjs';
+import { CtorParam, Properties, randomUUID } from '../registry.mjs';
 class Context extends Properties {
+    constructor(ctorArgs) {
+        const Id = randomUUID();
+        super(ctorArgs);
+        super.set({ Id }, false, true);
+    }
     get Id() {
         return super.get({ Id: null }, String.prototype);
     }
@@ -60,8 +65,8 @@ class ContextD extends Context {
         ];
         super(ctorParams);
     }
-    static ctor() {
-
+    static ctor(param1, param2, param3) {
+        return new ContextD(param1, param2, param3);
     }
 }
 
@@ -140,5 +145,16 @@ describe('when properties change', () => {
 
         expect(contextB.Id).toBe(contextC.Id); //they share a context
         expect(contextC.Id).toBe(contextB.Id); //they share a context
+    });
+    it('should deserialise', async () => {
+
+        const contextD = new ContextD('Hello World')
+        contextD.Id = 'e742b112-1363-49f2-84dd-5e2e2c8dabe5';
+
+        const deserialised = await contextD.deserialise();
+        
+        expect(deserialised).toBeDefined();
+        expect(deserialised.Id).not.toBe(contextD.Id);
+
     });
 });
