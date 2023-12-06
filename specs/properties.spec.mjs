@@ -1,72 +1,60 @@
 import { CtorParam, Properties, randomUUID } from '../registry.mjs';
 class Context extends Properties {
-    constructor(ctorArgs) {
-        const Id = randomUUID();
-        super(ctorArgs);
-        super.set({ Id }, false, true);
+    /**
+     * @param { Object } context
+    */
+    constructor(context) {
+        super(context);
+        this._Id = randomUUID();
     }
+    /**
+     * @returns { String }
+    */
     get Id() {
-        return super.get({ Id: null }, String.prototype);
+        return this._Id;
     }
+    /**
+     * @param { String } value
+    */
     set Id(value) {
-        super.set({ Id: value }, false, true);
+        this._Id = value;
     }
 }
-class ContextRoot extends Context {
-    static ctor() {
-
-    }
-}
+class ContextRoot extends Context {}
 class ContextA extends Context {
-    constructor({ contextRoot }) {
-        const ctorParams = [
-            new CtorParam('contextRoot', contextRoot, true, true, true),
-        ];
-        super(ctorParams);
-    }
-    static ctor() {
-
+    /**
+     * @param { ContextRoot } contextRoot
+    */
+    constructor(contextRoot) {
+        super(contextRoot);
     }
 }
 class ContextB extends Context {
-    constructor({ contextRoot, contextA }) {
-        if (contextRoot) {
-            super([
-                new CtorParam('contextRoot', contextRoot, true, true, true),
-            ]);
-        }
-        if (contextA) {
-            super([
-                new CtorParam('contextA', contextA, true, true, true)
-            ]);
-        }
-    }
-    static ctor() {
-
+    /**
+     * @param { ContextRoot } contextRoot
+     * @param { ContextA } contextA
+    */
+    constructor(contextRoot, contextA) {
+        super(contextRoot);
+        this._contextA = contextA;
     }
 }
 class ContextC extends Context {
-    constructor({ contextA }) {
-        const ctorParams = [
-            new CtorParam('contextA', contextA, true, true, true)
-        ];
-        super(ctorParams);
-    }
-    static ctor() {
-
+    /**
+     * @param { ContextA } contextA
+    */
+    constructor(contextA) {
+        super(contextA);
     }
 }
 class ContextD extends Context {
-    constructor(param1, param2 = 'HelloWorldAgain', param3 = { param3: 'GoodbyeWorld' }) {
-        const ctorParams = [
-            new CtorParam('param1', param1, true, true, false),
-            new CtorParam('param2', param2, true, true, false),
-            new CtorParam('param3', param3, true, true, false)
-        ];
-        super(ctorParams);
-    }
-    static ctor(param1, param2, param3) {
-        return new ContextD(param1, param2, param3);
+    /**
+     * @param { String } param1
+     * @param { String } param2
+     * @param { { message: String } } param3
+    */
+    constructor(param1, param2 = 'HelloWorldAgain', param3 = { message: 'GoodbyeWorld' }) {
+        super();
     }
 }
 
