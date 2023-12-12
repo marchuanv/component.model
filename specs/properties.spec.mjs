@@ -1,66 +1,9 @@
-import { CtorParam, Properties, randomUUID } from '../registry.mjs';
-class Context extends Properties {
-    /**
-     * @param { Object } context
-    */
-    constructor(context) {
-        super(context);
-        this._Id = randomUUID();
-    }
-    /**
-     * @returns { String }
-    */
-    get Id() {
-        return this._Id;
-    }
-    /**
-     * @param { String } value
-    */
-    set Id(value) {
-        this._Id = value;
-    }
-}
-class ContextRoot extends Context {}
-class ContextA extends Context {
-    /**
-     * @param { ContextRoot } contextRoot
-    */
-    constructor(contextRoot) {
-        super(contextRoot);
-    }
-}
-class ContextB extends Context {
-    /**
-     * @param { ContextRoot } contextRoot
-     * @param { ContextA } contextA
-    */
-    constructor(contextRoot, contextA) {
-        super(contextRoot);
-        this._contextA = contextA;
-    }
-}
-class ContextC extends Context {
-    /**
-     * @param { ContextA } contextA
-    */
-    constructor(contextA) {
-        super(contextA);
-    }
-}
-class ContextD extends Context {
-    /**
-     * @param { String } param1
-     * @param { String } param2
-     * @param { { message: String } } param3
-    */
-    constructor(param1, param2 = 'HelloWorldAgain', param3 = { message: 'GoodbyeWorld' }) {
-        super();
-    }
-}
+import { ComplexType, TypeMapper } from 'utils';
+import { MemberParameter, Properties } from '../registry.mjs';
 
 describe('when properties change', () => {
     it('should sync data', () => {
-        const contextRoot = new ContextRoot();
+        const human = new Human('Bob', 30, 170, 89);
         const actualValue = 'ef7cbdeb-6536-4e38-a9e1-cc1acdd00e7d';
         contextRoot.Id = actualValue;
         expect(contextRoot.Id).toBe(actualValue);
@@ -146,3 +89,75 @@ describe('when properties change', () => {
 
     });
 });
+
+class Human extends Properties {
+    /**
+     * @param { String } name
+     * @param { Number } age
+     * @param { Number } height
+     * @param { Number } weight
+     * @param { Array<String> } parts
+     * @param {{ heart: Boolean }} organs
+    */
+    constructor(name, age, height, weight, parts = ['head', 'feet', 'legs', 'arms'], organs = { heart: true }) {
+        super([
+            new MemberParameter( { name }, new TypeMapper(PrimitiveType.String)),
+            new MemberParameter({ age }, new TypeMapper(PrimitiveType.Number)),
+            new MemberParameter({ height }, new TypeMapper(PrimitiveType.Number)),
+            new MemberParameter({ weight }, new TypeMapper(PrimitiveType.Number)),
+            new MemberParameter({ parts }, new TypeMapper(ComplexType.StringArray)),
+            new MemberParameter({ organs }, new TypeMapper(ComplexType.Object))
+        ]);
+        this._age = age;
+    }
+    /**
+     * @returns { Number }
+    */
+    get age() {
+        return this._age;
+    }
+    /**
+     * @param { Number } value
+    */
+    set age(value) {
+        this._age = value;
+    }
+    /**
+     * @param { Number } age
+     * @param { Array<String> } parts
+     * @param { Number } height
+     * @param { Number } weight
+     * @param {{ heart: Boolean }} organs
+     * @returns { Human }
+    */
+    static create(age = 1, parts = ['head', 'feet', 'legs', 'arms'], height, weight, organs = { heart: true }) {
+    }
+}
+
+class Baby extends Human {
+    /**
+     * @param { String } name
+    */
+    constructor(name) {
+        super(name, 1, 49, 3.3);
+        this._name = name;
+    }
+    /**
+     * @returns { String }
+    */
+    get name() {
+        return this._name;
+    }
+    /**
+     * @param { String } value
+    */
+    set name(value) {
+        this._name = value;
+    }
+    /**
+     * @param { Number } age
+    */
+    setAge(age) {
+        super.age = age;
+    }
+}
