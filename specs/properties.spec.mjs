@@ -37,7 +37,7 @@ describe('when properties change', () => {
         expect(serialised).toBeDefined();
         expect(serialised).not.toBeNull();
     });
-    fit('should deserialise', async () => {
+    it('should deserialise', async () => {
         const expectedName = 'Bob';
         const expectedAge = 30;
         const human = new Human(expectedName, expectedAge, 170, 89);
