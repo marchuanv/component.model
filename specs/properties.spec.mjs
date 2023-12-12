@@ -100,14 +100,4 @@ class Human extends Properties {
     set age(value) {
         super.set({ age: value });
     }
-    /**
-     * @param { Number } age
-     * @param { Array<String> } parts
-     * @param { Number } height
-     * @param { Number } weight
-     * @param {{ heart: Boolean }} organs
-     * @returns { Human }
-    */
-    static create(age = 1, parts = ['head', 'feet', 'legs', 'arms'], height, weight, organs = { heart: true }) {
-    }
 }
