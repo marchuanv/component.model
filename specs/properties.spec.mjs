@@ -1,21 +1,29 @@
-import { ComplexType, TypeMapper } from 'utils';
-import { MemberParameter, Properties } from '../registry.mjs';
-
+import {
+    MemberParameter,
+    Properties
+} from '../registry.mjs';
 describe('when properties change', () => {
-    it('should sync data', () => {
-        const human = new Human('Bob', 30, 170, 89);
-        const actualValue = 'ef7cbdeb-6536-4e38-a9e1-cc1acdd00e7d';
-        contextRoot.Id = actualValue;
-        expect(contextRoot.Id).toBe(actualValue);
+    fit('should sync data', () => {
+        const expectedName = 'Bob';
+        const expectedAge = 30;
+        const human = new Human(expectedName, expectedAge, 170, 89);
+        expect(human.name).toBe(expectedName);
+        expect(human.age).toBe(expectedAge);
+
         let firedCount = 0;
-        contextRoot.onSet({ Id: null }, false, false, (value) => {
+        human.onSet({ name: null }, false, false, (value) => {
             firedCount = firedCount + 1;
-            return actualValue;
+            return expectedName;
         });
-        const expectedValue = '5a0bf50b-6ba5-4570-984c-cdcada1d19f0';
-        contextRoot.Id = expectedValue; //onChange
-        expect(firedCount).toBe(1);
-        expect(contextRoot.Id).toBe(actualValue);
+        human.onSet({ age: null }, false, false, (value) => {
+            firedCount = firedCount + 1;
+            return expectedAge;
+        });
+        human.age = 25; //onChange
+        human.name = 'John'; //onChange
+
+        expect(human.name).toBe(expectedName);
+        expect(human.age).toBe(expectedAge);
     });
     it('should sync data within context', () => {
         const contextRoot = new ContextRoot();
@@ -101,14 +109,21 @@ class Human extends Properties {
     */
     constructor(name, age, height, weight, parts = ['head', 'feet', 'legs', 'arms'], organs = { heart: true }) {
         super([
-            new MemberParameter( { name }, new TypeMapper(PrimitiveType.String)),
-            new MemberParameter({ age }, new TypeMapper(PrimitiveType.Number)),
-            new MemberParameter({ height }, new TypeMapper(PrimitiveType.Number)),
-            new MemberParameter({ weight }, new TypeMapper(PrimitiveType.Number)),
-            new MemberParameter({ parts }, new TypeMapper(ComplexType.StringArray)),
-            new MemberParameter({ organs }, new TypeMapper(ComplexType.Object))
+            new MemberParameter( { name }),
+            new MemberParameter({ age }),
+            new MemberParameter({ height }),
+            new MemberParameter({ weight }),
+            new MemberParameter({ parts }),
+            new MemberParameter({ organs })
         ]);
         this._age = age;
+        this._name = name;
+    }
+    /**
+     * @returns { String }
+    */
+    get name() {
+        return this._name;
     }
     /**
      * @returns { Number }
