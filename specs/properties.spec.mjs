@@ -3,29 +3,30 @@ import {
     Properties
 } from '../registry.mjs';
 describe('when properties change', () => {
-    fit('should sync data', () => {
+    it('should sync data', () => {
         const expectedName = 'Bob';
         const expectedAge = 30;
         const human = new Human(expectedName, expectedAge, 170, 89);
         expect(human.name).toBe(expectedName);
         expect(human.age).toBe(expectedAge);
 
-        let firedCount = 0;
-        human.onSet({ name: null }, false, false, (value) => {
-            firedCount = firedCount + 1;
+        let fireCount = 0;
+        human.onSet({ name: null }, (value) => {
+            fireCount = fireCount + 1;
             return expectedName;
         });
-        human.onSet({ age: null }, false, false, (value) => {
-            firedCount = firedCount + 1;
+        human.onSet({ age: null }, (value) => {
+            fireCount = fireCount + 1;
             return expectedAge;
         });
         human.age = 25; //onChange
         human.name = 'John'; //onChange
 
+        expect(fireCount).toBe(2);
         expect(human.name).toBe(expectedName);
         expect(human.age).toBe(expectedAge);
     });
-    it('should sync data within context', () => {
+    fit('should sync data within context', () => {
         const contextRoot = new ContextRoot();
         const actualValue = 'b4ad82a4-d76e-4b36-bc4d-f0ca5386622f';
         contextRoot.Id = actualValue;
@@ -116,26 +117,32 @@ class Human extends Properties {
             new MemberParameter({ parts }),
             new MemberParameter({ organs })
         ]);
-        this._age = age;
-        this._name = name;
+        super.set({ age });
+        super.set({ name });
     }
     /**
      * @returns { String }
     */
     get name() {
-        return this._name;
+        return super.get({ name: null });
+    }
+    /**
+     * @param { String } value
+    */
+    set name(value) {
+        super.set({ name: value });
     }
     /**
      * @returns { Number }
     */
     get age() {
-        return this._age;
+        return super.get({ age: null });
     }
     /**
      * @param { Number } value
     */
     set age(value) {
-        this._age = value;
+        super.set({ age: value });
     }
     /**
      * @param { Number } age
@@ -146,33 +153,5 @@ class Human extends Properties {
      * @returns { Human }
     */
     static create(age = 1, parts = ['head', 'feet', 'legs', 'arms'], height, weight, organs = { heart: true }) {
-    }
-}
-
-class Baby extends Human {
-    /**
-     * @param { String } name
-    */
-    constructor(name) {
-        super(name, 1, 49, 3.3);
-        this._name = name;
-    }
-    /**
-     * @returns { String }
-    */
-    get name() {
-        return this._name;
-    }
-    /**
-     * @param { String } value
-    */
-    set name(value) {
-        this._name = value;
-    }
-    /**
-     * @param { Number } age
-    */
-    setAge(age) {
-        super.age = age;
     }
 }
