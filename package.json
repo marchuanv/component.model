@@ -1,5 +1,5 @@
 {
-    "name": "component.properties",
+    "name": "component.model",
     "description": "a private secure bag for class properties",
     "version": "1.0.0",
     "author": "Marchuan Van Der Merwe",
@@ -11,7 +11,7 @@
         "npm": "9.5.1"
     },
     "keywords": [
-        "properties",
+        "model",
         "class",
         "bag"
     ],
@@ -23,12 +23,12 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/marchuanv/component.properties.git"
+        "url": "git+https://github.com/marchuanv/component.model.git"
     },
     "bugs": {
-        "url": "https://github.com/marchuanv/component.properties/issues"
+        "url": "https://github.com/marchuanv/component.model/issues"
     },
-    "homepage": "https://github.com/marchuanv/component.properties#readme",
+    "homepage": "https://github.com/marchuanv/component.model#readme",
     "dependencies": {
         "jasmine": "^5.1.0",
         "utils": "marchuanv/utils"
