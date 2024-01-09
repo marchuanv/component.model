@@ -73,8 +73,6 @@ class Human extends Properties {
             new MemberParameter({ parts }),
             new MemberParameter({ organs })
         ]);
-        super.set({ age });
-        super.set({ name });
     }
     /**
      * @returns { String }
