@@ -1,8 +1,8 @@
 import {
     MemberParameter,
-    Properties
+    Model
 } from '../registry.mjs';
-describe('when properties change', () => {
+describe('when model properties change', () => {
     it('should sync data', () => {
         const expectedName = 'Bob';
         const expectedAge = 30;
@@ -48,14 +48,14 @@ describe('when properties change', () => {
         expect(serialised).toBeDefined();
         expect(serialised).not.toBeNull();
 
-        const humanDeserialised = await Properties.deserialise(serialised, Human);
+        const humanDeserialised = await Model.deserialise(serialised, Human);
         expect(humanDeserialised).toBeDefined();
         expect(humanDeserialised).not.toBeNull();
 
     });
 });
 
-class Human extends Properties {
+class Human extends Model {
     /**
      * @param { String } name
      * @param { Number } age

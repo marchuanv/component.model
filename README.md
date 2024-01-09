@@ -1,1 +1,1 @@
-# component.properties
+# component.model
