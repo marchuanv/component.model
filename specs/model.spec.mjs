@@ -1,26 +1,30 @@
 import {
-    MemberParameter,
     Model
 } from '../registry.mjs';
+import {
+    Dog,
+    Food
+} from './index.mjs';
 describe('when model properties change', () => {
-    it('should sync data', () => {
-        const expectedName = 'Bob';
-        const expectedAge = 30;
-        const human = new Human(expectedName, expectedAge, 170, 89);
-        expect(human.name).toBe(expectedName);
-        expect(human.age).toBe(expectedAge);
+    fit('should sync data', () => {
+        const expectedName = 'Parody';
+        const expectedAge = 5;
+        const food = new Food('epol', true);
+        const dog = new Dog(expectedName, expectedAge, 20, food);
+        expect(dog.name).toBe(expectedName);
+        expect(dog.age).toBe(expectedAge);
 
         let fireCount = 0;
-        human.onSet({ name: null }, (value) => {
+        dog.onSet({ name: null }, (value) => {
             fireCount = fireCount + 1;
             return expectedName;
         });
-        human.onSet({ age: null }, (value) => {
+        dog.onSet({ age: null }, (value) => {
             fireCount = fireCount + 1;
             return expectedAge;
         });
-        human.age = 25; //onChange
-        human.name = 'John'; //onChange
+        dog.age = 25; //onChange
+        dog.name = 'Lassy'; //onChange
 
         expect(fireCount).toBe(2);
         expect(human.name).toBe(expectedName);
@@ -54,48 +58,3 @@ describe('when model properties change', () => {
 
     });
 });
-
-class Human extends Model {
-    /**
-     * @param { String } name
-     * @param { Number } age
-     * @param { Number } height
-     * @param { Number } weight
-     * @param { Array<String> } parts
-     * @param {{ heart: Boolean }} organs
-    */
-    constructor(name, age, height, weight, parts = ['head', 'feet', 'legs', 'arms'], organs = { heart: true }) {
-        super([
-            new MemberParameter( { name }),
-            new MemberParameter({ age }),
-            new MemberParameter({ height }),
-            new MemberParameter({ weight }),
-            new MemberParameter({ parts }),
-            new MemberParameter({ organs })
-        ]);
-    }
-    /**
-     * @returns { String }
-    */
-    get name() {
-        return super.get({ name: null });
-    }
-    /**
-     * @param { String } value
-    */
-    set name(value) {
-        super.set({ name: value });
-    }
-    /**
-     * @returns { Number }
-    */
-    get age() {
-        return super.get({ age: null });
-    }
-    /**
-     * @param { Number } value
-    */
-    set age(value) {
-        super.set({ age: value });
-    }
-}
