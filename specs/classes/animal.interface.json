@@ -1,0 +1,49 @@
+{
+    "Animal": {
+        "className": "Animal",
+        "Id": "8936e9ae-c830-4840-b21c-04b643b8a5a7",
+        "classFilePath": "./specs/classes/animal.mjs",
+        "extend": {},
+        "ctor": {
+            "parameters": {
+                "name": {
+                    "type": {
+                        "$refId": "68c86ae1-f150-41d2-a01e-7bb439ec6e29"
+                    }
+                },
+                "age": {
+                    "type": {
+                        "$refId": "36320378-ccc5-4c38-8425-50950c5ff61d"
+                    }
+                },
+                "weight": {
+                    "type": {
+                        "$refId": "36320378-ccc5-4c38-8425-50950c5ff61d"
+                    }
+                },
+                "food": {
+                    "type": {
+                        "$refId": "9b4506a9-ed68-4d86-9899-a8cfd10591f0"
+                    }
+                },
+                "type": {
+                    "type": {
+                        "$refId": "68c86ae1-f150-41d2-a01e-7bb439ec6e29"
+                    }
+                }
+            }
+        },
+        "methods": {},
+        "properties": {
+            "type": {
+                "isStatic": false,
+                "returns": {
+                    "type": {
+                        "$refId": "68c86ae1-f150-41d2-a01e-7bb439ec6e29"
+                    }
+                },
+                "parameters": []
+            }
+        }
+    }
+}
