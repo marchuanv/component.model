@@ -3,7 +3,7 @@ import {
     Model
 } from '../../registry.mjs';
 import {
-    Food
+    Food,
 } from '../index.mjs';
 export class Animal extends Model {
     /**

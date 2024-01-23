@@ -1,6 +1,5 @@
 import {
-    Animal,
-    Food
+    Animal, Food,
 } from '../index.mjs';
 export class Dog extends Animal {
     /**
@@ -10,7 +9,7 @@ export class Dog extends Animal {
      * @param { Food } food
     */
     constructor(name, age, weight, food) {
-        super(name, age, weight, food, 'dog');
+        super(name, age, weight, food);
     }
     /**
      * @returns { String }

@@ -1,0 +1,118 @@
+{
+    "className": "Model",
+    "Id": "5b17f7b0-9499-435c-a70a-4481ad37fb55",
+    "scriptFilePath": "./model.mjs",
+    "dependencies": [],
+    "ctor": {
+        "Id": "b03890aa-591c-4d9d-91c3-d38f7c5cae57",
+        "name": "constructor",
+        "isCtor": true,
+        "isStatic": false,
+        "typeDefinition": {
+            "Id": "5b17f7b0-9499-435c-a70a-4481ad37fb55",
+            "name": "model",
+            "typeName": "Model",
+            "isArray": false,
+            "isReferenceType": true,
+            "isObject": false
+        },
+        "parameters": [
+            {
+                "Id": "ef532571-8ca4-441b-a1b2-3ea8f1642fcc",
+                "name": "memberParameters",
+                "typeDefinition": {
+                    "Id": "",
+                    "name": "memberParameter",
+                    "typeName": "MemberParameter",
+                    "isArray": true,
+                    "isReferenceType": true,
+                    "isObject": false
+                }
+            }
+        ]
+    },
+    "methods": [
+        {
+            "Id": "1e4d987a-bd34-4293-9414-4b38a2bba908",
+            "name": "set",
+            "isCtor": false,
+            "isStatic": false,
+            "typeDefinition": {},
+            "parameters": [
+                {
+                    "Id": "edc303bb-5199-4d9c-85b3-bdb787708543",
+                    "name": "property",
+                    "typeDefinition": {
+                        "Id": "11b2c041-b639-4e82-9b94-a43c523497db",
+                        "name": "object",
+                        "typeName": "Object",
+                        "isArray": false,
+                        "isReferenceType": true,
+                        "isObject": false
+                    }
+                },
+                {
+                    "Id": "74ddf911-f588-4d08-9c13-3be42f9f2f75",
+                    "name": "type",
+                    "typeDefinition": {
+                        "Id": "11b2c041-b639-4e82-9b94-a43c523497db",
+                        "name": "object",
+                        "typeName": "Object",
+                        "isArray": false,
+                        "isReferenceType": true,
+                        "isObject": false
+                    }
+                }
+            ]
+        },
+        {
+            "Id": "935e2666-256d-4397-abc1-d2b0d891dfda",
+            "name": "get",
+            "isCtor": false,
+            "isStatic": false,
+            "typeDefinition": {
+                "Id": "11b2c041-b639-4e82-9b94-a43c523497db",
+                "name": "object",
+                "typeName": "Object",
+                "isArray": false,
+                "isReferenceType": true,
+                "isObject": false
+            },
+            "parameters": []
+        },
+        {
+            "Id": "e9219b3e-f4c5-4730-9f61-0e751eb8cf4b",
+            "name": "onSet",
+            "isCtor": false,
+            "isStatic": false,
+            "typeDefinition": {},
+            "parameters": [
+                {
+                    "Id": "909b31ea-e306-4ba5-a2f6-a7f219b81a21",
+                    "name": "property",
+                    "typeDefinition": {
+                        "Id": "11b2c041-b639-4e82-9b94-a43c523497db",
+                        "name": "object",
+                        "typeName": "Object",
+                        "isArray": false,
+                        "isReferenceType": true,
+                        "isObject": false
+                    }
+                },
+                {
+                    "Id": "737f0de2-c7fb-49eb-84f4-4a359c2d8c5c",
+                    "name": "callback",
+                    "typeDefinition": {
+                        "Id": "",
+                        "name": "function",
+                        "typeName": "Function",
+                        "isArray": false,
+                        "isReferenceType": true,
+                        "isObject": false
+                    }
+                }
+            ]
+        },
+    ],
+    "properties": []
+}

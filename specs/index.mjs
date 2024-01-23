@@ -1,11 +1,16 @@
-import { Container, Specs, fileURLToPath, join } from '../registry.mjs';
-import { Animal } from './classes/animal.mjs';
-import { Dog } from './classes/dog.mjs';
-import { Food } from './classes/food.mjs';
-const currentDir = fileURLToPath(new URL('./', import.meta.url));
-Container.register(join(currentDir, 'classes', 'food.interface.json'), Food);
-Container.register(join(currentDir, 'classes', 'animal.interface.json'), Animal);
-Container.register(join(currentDir, 'classes', 'dog.interface.json'), Dog);
+import { Specs, TypeDefinition } from "../registry.mjs";
+import { Animal } from "./classes/animal.mjs";
+import { Dog } from "./classes/dog.mjs";
+import { Food } from "./classes/food.mjs";
+TypeDefinition.register([
+    { scriptFilePath: './specs/classes/animal.mjs', targetClass: Animal },
+    { scriptFilePath: './specs/classes/food.mjs', targetClass: Food },
+    { scriptFilePath: './specs/classes/dog.mjs', targetClass: Dog },
+]).then(() => {
+    const specs = new Specs(60000, './');
+    specs.run();
+}).catch((error) => {
+    console.error(error);
+});
 export { Animal, Dog, Food };
-const specs = new Specs(10000, './specs');
-specs.run();
+
