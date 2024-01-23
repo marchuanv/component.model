@@ -31,6 +31,7 @@
     "homepage": "https://github.com/marchuanv/component.model#readme",
     "dependencies": {
         "jasmine": "^5.1.0",
-        "utils": "marchuanv/utils"
+        "utils": "marchuanv/utils",
+        "component.container": "marchuanv/component.container"
     }
 }
