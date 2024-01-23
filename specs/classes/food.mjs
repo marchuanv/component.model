@@ -1,8 +1,8 @@
 import {
-    Container,
-    MemberParameter
+    MemberParameter,
+    Model
 } from '../../registry.mjs';
-export class Food extends Container {
+export class Food extends Model {
     /**
      * @param { String } name
      * @param { Boolean } isAdultFood

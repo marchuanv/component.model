@@ -37,7 +37,14 @@
             "name": "set",
             "isCtor": false,
             "isStatic": false,
-            "typeDefinition": {},
+            "typeDefinition": {
+                "Id": "851a9b60-204d-492c-b6c6-53c99c493ca0",
+                "name": "undefined",
+                "typeName": "undefined",
+                "isArray": false,
+                "isReferenceType": true,
+                "isObject": false
+            },
             "parameters": [
                 {
                     "Id": "edc303bb-5199-4d9c-85b3-bdb787708543",
@@ -85,7 +92,14 @@
             "name": "onSet",
             "isCtor": false,
             "isStatic": false,
-            "typeDefinition": {},
+            "typeDefinition": {
+                "Id": "851a9b60-204d-492c-b6c6-53c99c493ca0",
+                "name": "undefined",
+                "typeName": "undefined",
+                "isArray": false,
+                "isReferenceType": true,
+                "isObject": false
+            },
             "parameters": [
                 {
                     "Id": "909b31ea-e306-4ba5-a2f6-a7f219b81a21",

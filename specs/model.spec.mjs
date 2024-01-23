@@ -3,7 +3,7 @@ import {
     Food
 } from './index.mjs';
 describe('when model properties change', () => {
-    fit('should sync data', () => {
+    it('should sync data', () => {
         const expectedName = 'Parody';
         const expectedAge = 5;
         const food = new Food('epol', true);
