@@ -21,7 +21,7 @@
                 "Id": "ef532571-8ca4-441b-a1b2-3ea8f1642fcc",
                 "name": "memberParameters",
                 "typeDefinition": {
-                    "Id": "",
+                    "Id": "35239bc8-e656-4610-8f3d-e64f36bcee4d",
                     "name": "memberParameter",
                     "typeName": "MemberParameter",
                     "isArray": true,
@@ -103,7 +103,7 @@
                     "Id": "737f0de2-c7fb-49eb-84f4-4a359c2d8c5c",
                     "name": "callback",
                     "typeDefinition": {
-                        "Id": "",
+                        "Id": "802ca6e8-973f-4a8d-bdf3-e0e97affb42f",
                         "name": "function",
                         "typeName": "Function",
                         "isArray": false,
@@ -112,7 +112,7 @@
                     }
                 }
             ]
-        },
+        }
     ],
     "properties": []
 }
