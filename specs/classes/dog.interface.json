@@ -83,7 +83,7 @@
             "Id": "889232ac-4374-4879-8b66-8fcb6140ee56",
             "name": "name",
             "isGetter": true,
-            "isSetter": false,
+            "isSetter": true,
             "isStatic": false,
             "typeDefinition": {
                 "Id": "68c86ae1-f150-41d2-a01e-7bb439ec6e29",
@@ -99,7 +99,7 @@
             "Id": "77d843e5-9ecf-42b5-8a96-08233ad66c83",
             "name": "age",
             "isGetter": true,
-            "isSetter": false,
+            "isSetter": true,
             "isStatic": false,
             "typeDefinition": {
                 "Id": "36320378-ccc5-4c38-8425-50950c5ff61d",
