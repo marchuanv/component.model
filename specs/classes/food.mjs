@@ -10,7 +10,7 @@ export class Food extends Model {
     constructor(name, isAdultFood) {
         super([
             new MemberParameter({ name }, String),
-            new MemberParameter({ isAdultFood }, String)
+            new MemberParameter({ isAdultFood }, Boolean)
         ]);
     }
     /**
