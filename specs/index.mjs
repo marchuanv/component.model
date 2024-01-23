@@ -1,11 +1,15 @@
-import { Specs, TypeDefinition } from "../registry.mjs";
+import { Model, Specs, TypeDefinition, fileURLToPath, join } from "../registry.mjs";
 import { Animal } from "./classes/animal.mjs";
 import { Dog } from "./classes/dog.mjs";
 import { Food } from "./classes/food.mjs";
+let currentDir = fileURLToPath(new URL('./', import.meta.url));
+const specClassesScriptsDirPath = join(currentDir, 'classes');
+const libScriptsDirPath = join(currentDir, '../', 'lib');
 TypeDefinition.register([
-    { scriptFilePath: './specs/classes/animal.mjs', targetClass: Animal },
-    { scriptFilePath: './specs/classes/food.mjs', targetClass: Food },
-    { scriptFilePath: './specs/classes/dog.mjs', targetClass: Dog },
+    { scriptsDirPath: libScriptsDirPath, scriptFileName: 'model.mjs', targetClass: Model },
+    { scriptsDirPath: specClassesScriptsDirPath, scriptFileName: 'animal.mjs', targetClass: Animal },
+    { scriptsDirPath: specClassesScriptsDirPath, scriptFileName: 'food.mjs', targetClass: Food },
+    { scriptsDirPath: specClassesScriptsDirPath, scriptFileName: 'dog.mjs', targetClass: Dog },
 ]).then(() => {
     const specs = new Specs(60000, './');
     specs.run();
