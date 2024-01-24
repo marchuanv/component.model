@@ -1,25 +1,26 @@
 {
     "className": "Dog",
-    "Id": "2e732c70-708f-4320-9bba-ba476fee0e15",
-    "scriptFilePath": "./specs/classes/dog.mjs",
+    "Id": "94fd88e2-8c67-48d3-803c-11227c4f94e2",
+    "scriptFilePath": "C:\\github\\component.model\\specs\\classes\\dog.mjs",
     "dependencies": [
         {
-            "Id": "8936e9ae-c830-4840-b21c-04b643b8a5a7"
-        },
-        {
-            "Id": "9b4506a9-ed68-4d86-9899-a8cfd10591f0"
+            "Id": "0b3f9959-3352-4124-8298-52410fb3d5cd"
         },
         {
             "Id": "5b17f7b0-9499-435c-a70a-4481ad37fb55"
+        },
+        {
+            "Id": "cd426f6b-7b75-4648-a738-821ab4194e93"
         }
     ],
     "ctor": {
-        "Id": "d0e8d415-648b-4d1b-819d-f665114a1383",
+        "Id": "348efa29-ccd0-47f9-9c55-be9dd91312d8",
         "name": "constructor",
         "isCtor": true,
         "isStatic": false,
+        "convertToArray": false,
         "typeDefinition": {
-            "Id": "2e732c70-708f-4320-9bba-ba476fee0e15",
+            "Id": "94fd88e2-8c67-48d3-803c-11227c4f94e2",
             "name": "dog",
             "typeName": "Dog",
             "isArray": false,
@@ -28,8 +29,9 @@
         },
         "parameters": [
             {
-                "Id": "624c8206-57d6-49aa-bb6d-9ecc70a55cf8",
+                "Id": "f6d43b9a-6df3-4f04-bd0d-d30e524efc82",
                 "name": "name",
+                "convertToArray": false,
                 "typeDefinition": {
                     "Id": "68c86ae1-f150-41d2-a01e-7bb439ec6e29",
                     "name": "string",
@@ -40,8 +42,9 @@
                 }
             },
             {
-                "Id": "4fbe113c-55bc-4c94-8bae-3c0b9d2290d7",
+                "Id": "7a74170c-5770-476e-9da1-aa98e540b69f",
                 "name": "age",
+                "convertToArray": false,
                 "typeDefinition": {
                     "Id": "36320378-ccc5-4c38-8425-50950c5ff61d",
                     "name": "number",
@@ -52,8 +55,9 @@
                 }
             },
             {
-                "Id": "d2c6df02-630f-400b-b413-33733ddf6b2d",
+                "Id": "333f6480-f33d-4c5b-a7ac-38e4d9b87b3c",
                 "name": "weight",
+                "convertToArray": false,
                 "typeDefinition": {
                     "Id": "36320378-ccc5-4c38-8425-50950c5ff61d",
                     "name": "number",
@@ -64,10 +68,11 @@
                 }
             },
             {
-                "Id": "d2c6df02-630f-400b-b413-33733ddf6b2d",
+                "Id": "2c8afc6c-ac1d-4970-9216-c258d38de9f0",
                 "name": "food",
+                "convertToArray": false,
                 "typeDefinition": {
-                    "Id": "9b4506a9-ed68-4d86-9899-a8cfd10591f0",
+                    "Id": "cd426f6b-7b75-4648-a738-821ab4194e93",
                     "name": "food",
                     "typeName": "Food",
                     "isArray": false,
@@ -80,43 +85,43 @@
     "methods": [],
     "properties": [
         {
-            "Id": "889232ac-4374-4879-8b66-8fcb6140ee56",
+            "Id": "8a11529f-5676-4756-9ccb-2ca0a9db31b2",
             "name": "name",
             "isGetter": true,
             "isSetter": true,
             "isStatic": false,
+            "convertToArray": false,
             "typeDefinition": {
                 "Id": "68c86ae1-f150-41d2-a01e-7bb439ec6e29",
                 "name": "string",
                 "typeName": "String",
                 "isArray": false,
-                "isReferenceType": true,
+                "isReferenceType": false,
                 "isObject": false
             },
-            "parameters": []
+            "parameters": [
+                {
+                    "Id": "83b032ae-5f80-46ec-958f-bb8e672f9f67",
+                    "name": "value",
+                    "convertToArray": false,
+                    "typeDefinition": {
+                        "Id": "68c86ae1-f150-41d2-a01e-7bb439ec6e29",
+                        "name": "string",
+                        "typeName": "String",
+                        "isArray": false,
+                        "isReferenceType": false,
+                        "isObject": false
+                    }
+                }
+            ]
         },
         {
-            "Id": "77d843e5-9ecf-42b5-8a96-08233ad66c83",
+            "Id": "ec12891b-363a-49d7-9b17-381b44f82941",
             "name": "age",
             "isGetter": true,
             "isSetter": true,
             "isStatic": false,
-            "typeDefinition": {
-                "Id": "36320378-ccc5-4c38-8425-50950c5ff61d",
-                "name": "number",
-                "typeName": "Number",
-                "isArray": false,
-                "isReferenceType": true,
-                "isObject": false
-            },
-            "parameters": []
-        },
-        {
-            "Id": "564d8004-04ba-48ba-b35a-0fb0697c4816",
-            "name": "weight",
-            "isGetter": true,
-            "isSetter": false,
-            "isStatic": false,
+            "convertToArray": false,
             "typeDefinition": {
                 "Id": "36320378-ccc5-4c38-8425-50950c5ff61d",
                 "name": "number",
@@ -125,23 +130,83 @@
                 "isReferenceType": false,
                 "isObject": false
             },
-            "parameters": []
+            "parameters": [
+                {
+                    "Id": "83632de1-a17e-4703-af6c-9a45e58685e7",
+                    "name": "value",
+                    "convertToArray": false,
+                    "typeDefinition": {
+                        "Id": "36320378-ccc5-4c38-8425-50950c5ff61d",
+                        "name": "number",
+                        "typeName": "Number",
+                        "isArray": false,
+                        "isReferenceType": false,
+                        "isObject": false
+                    }
+                }
+            ]
         },
         {
-            "Id": "229d9753-d113-4b77-8e7d-46a233d5ab38",
+            "Id": "47b4b297-add4-4713-a2eb-6ccd2cae2b07",
+            "name": "weight",
+            "isGetter": true,
+            "isSetter": true,
+            "isStatic": false,
+            "convertToArray": false,
+            "typeDefinition": {
+                "Id": "36320378-ccc5-4c38-8425-50950c5ff61d",
+                "name": "number",
+                "typeName": "Number",
+                "isArray": false,
+                "isReferenceType": false,
+                "isObject": false
+            },
+            "parameters": [
+                {
+                    "Id": "b8267eb4-c096-43b2-84a1-a6107a0c869d",
+                    "name": "value",
+                    "convertToArray": false,
+                    "typeDefinition": {
+                        "Id": "36320378-ccc5-4c38-8425-50950c5ff61d",
+                        "name": "number",
+                        "typeName": "Number",
+                        "isArray": false,
+                        "isReferenceType": false,
+                        "isObject": false
+                    }
+                }
+            ]
+        },
+        {
+            "Id": "6764f8d6-6092-4006-bc98-d80e0baaf0c2",
             "name": "food",
             "isGetter": true,
-            "isSetter": false,
+            "isSetter": true,
             "isStatic": false,
+            "convertToArray": false,
             "typeDefinition": {
-                "Id": "9b4506a9-ed68-4d86-9899-a8cfd10591f0",
+                "Id": "cd426f6b-7b75-4648-a738-821ab4194e93",
                 "name": "food",
                 "typeName": "Food",
                 "isArray": false,
                 "isReferenceType": true,
                 "isObject": false
             },
-            "parameters": []
+            "parameters": [
+                {
+                    "Id": "acaad9d1-1e52-4131-ac30-6793e286192b",
+                    "name": "value",
+                    "convertToArray": false,
+                    "typeDefinition": {
+                        "Id": "cd426f6b-7b75-4648-a738-821ab4194e93",
+                        "name": "food",
+                        "typeName": "Food",
+                        "isArray": false,
+                        "isReferenceType": true,
+                        "isObject": false
+                    }
+                }
+            ]
         }
     ]
 }

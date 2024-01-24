@@ -1,19 +1,20 @@
 {
     "className": "Food",
-    "Id": "9b4506a9-ed68-4d86-9899-a8cfd10591f0",
-    "scriptFilePath": "./specs/classes/food.mjs",
+    "Id": "cd426f6b-7b75-4648-a738-821ab4194e93",
+    "scriptFilePath": "C:\\github\\component.model\\specs\\classes\\food.mjs",
     "dependencies": [
         {
             "Id": "5b17f7b0-9499-435c-a70a-4481ad37fb55"
         }
     ],
     "ctor": {
-        "Id": "35af3262-7bdf-404f-aaf7-be3074abc14f",
+        "Id": "49f7fcfe-215f-4f5f-967d-2221349e1daa",
         "name": "constructor",
         "isCtor": true,
         "isStatic": false,
+        "convertToArray": false,
         "typeDefinition": {
-            "Id": "9b4506a9-ed68-4d86-9899-a8cfd10591f0",
+            "Id": "cd426f6b-7b75-4648-a738-821ab4194e93",
             "name": "food",
             "typeName": "Food",
             "isArray": false,
@@ -22,8 +23,9 @@
         },
         "parameters": [
             {
-                "Id": "6964f19b-84c3-4a99-9bb9-a29807f7f9dc",
+                "Id": "4d92a7e7-b54d-4399-b77c-c1ba3a348cd7",
                 "name": "name",
+                "convertToArray": false,
                 "typeDefinition": {
                     "Id": "68c86ae1-f150-41d2-a01e-7bb439ec6e29",
                     "name": "string",
@@ -34,8 +36,9 @@
                 }
             },
             {
-                "Id": "73d5beb1-23be-4e62-b893-92197701652c",
+                "Id": "aa1142c2-4671-4c65-8845-e7e481435042",
                 "name": "isAdultFood",
+                "convertToArray": false,
                 "typeDefinition": {
                     "Id": "4be60aad-142f-49f4-b690-3d2ab7483bf5",
                     "name": "boolean",
@@ -50,36 +53,66 @@
     "methods": [],
     "properties": [
         {
-            "Id": "1f785a06-a5de-4c7f-bb66-40b19e3a47db",
+            "Id": "6843db4d-3217-41d7-909b-584e4da1ff03",
             "name": "name",
             "isGetter": true,
-            "isSetter": false,
+            "isSetter": true,
             "isStatic": false,
+            "convertToArray": false,
             "typeDefinition": {
                 "Id": "68c86ae1-f150-41d2-a01e-7bb439ec6e29",
                 "name": "string",
                 "typeName": "String",
                 "isArray": false,
-                "isReferenceType": true,
+                "isReferenceType": false,
                 "isObject": false
             },
-            "parameters": []
+            "parameters": [
+                {
+                    "Id": "53c2ee9c-5eed-4478-b706-874f5d38461b",
+                    "name": "value",
+                    "convertToArray": false,
+                    "typeDefinition": {
+                        "Id": "68c86ae1-f150-41d2-a01e-7bb439ec6e29",
+                        "name": "string",
+                        "typeName": "String",
+                        "isArray": false,
+                        "isReferenceType": false,
+                        "isObject": false
+                    }
+                }
+            ]
         },
         {
-            "Id": "026d42dc-a1df-4fa1-aef0-bf791e853bb4",
+            "Id": "6adcee8f-37be-40fa-8225-8931221c54f7",
             "name": "isAdultFood",
             "isGetter": true,
-            "isSetter": false,
+            "isSetter": true,
             "isStatic": false,
+            "convertToArray": false,
             "typeDefinition": {
                 "Id": "4be60aad-142f-49f4-b690-3d2ab7483bf5",
                 "name": "boolean",
                 "typeName": "Boolean",
                 "isArray": false,
-                "isReferenceType": true,
+                "isReferenceType": false,
                 "isObject": false
             },
-            "parameters": []
+            "parameters": [
+                {
+                    "Id": "0a1c39ba-3f7f-4f8b-9bb9-8c03d6cd3a2e",
+                    "name": "value",
+                    "convertToArray": false,
+                    "typeDefinition": {
+                        "Id": "4be60aad-142f-49f4-b690-3d2ab7483bf5",
+                        "name": "boolean",
+                        "typeName": "Boolean",
+                        "isArray": false,
+                        "isReferenceType": false,
+                        "isObject": false
+                    }
+                }
+            ]
         }
     ]
 }

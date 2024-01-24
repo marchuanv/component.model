@@ -1,19 +1,23 @@
 {
     "className": "Animal",
-    "Id": "8936e9ae-c830-4840-b21c-04b643b8a5a7",
-    "scriptFilePath": "./specs/classes/animal.mjs",
+    "Id": "0b3f9959-3352-4124-8298-52410fb3d5cd",
+    "scriptFilePath": "C:\\github\\component.model\\specs\\classes\\animal.mjs",
     "dependencies": [
         {
             "Id": "5b17f7b0-9499-435c-a70a-4481ad37fb55"
+        },
+        {
+            "Id": "cd426f6b-7b75-4648-a738-821ab4194e93"
         }
     ],
     "ctor": {
-        "Id": "338858c7-df5a-430a-9021-6bc937b00523",
+        "Id": "6b4c7403-023f-4ed7-a7ae-366d8d0ff50c",
         "name": "constructor",
         "isCtor": true,
         "isStatic": false,
+        "convertToArray": false,
         "typeDefinition": {
-            "Id": "8936e9ae-c830-4840-b21c-04b643b8a5a7",
+            "Id": "0b3f9959-3352-4124-8298-52410fb3d5cd",
             "name": "animal",
             "typeName": "Animal",
             "isArray": false,
@@ -22,8 +26,61 @@
         },
         "parameters": [
             {
-                "Id": "6575e814-32f9-49c6-ad7e-243ac0a2ea59",
+                "Id": "00801734-ab6b-475e-a228-c476aeacafb6",
+                "name": "name",
+                "convertToArray": false,
+                "typeDefinition": {
+                    "Id": "68c86ae1-f150-41d2-a01e-7bb439ec6e29",
+                    "name": "string",
+                    "typeName": "String",
+                    "isArray": false,
+                    "isReferenceType": false,
+                    "isObject": false
+                }
+            },
+            {
+                "Id": "b9de4250-5bcb-483b-a291-fce8d930281b",
+                "name": "age",
+                "convertToArray": false,
+                "typeDefinition": {
+                    "Id": "36320378-ccc5-4c38-8425-50950c5ff61d",
+                    "name": "number",
+                    "typeName": "Number",
+                    "isArray": false,
+                    "isReferenceType": false,
+                    "isObject": false
+                }
+            },
+            {
+                "Id": "a8d83518-82b5-4076-a736-dd4f3eac6d07",
+                "name": "weight",
+                "convertToArray": false,
+                "typeDefinition": {
+                    "Id": "36320378-ccc5-4c38-8425-50950c5ff61d",
+                    "name": "number",
+                    "typeName": "Number",
+                    "isArray": false,
+                    "isReferenceType": false,
+                    "isObject": false
+                }
+            },
+            {
+                "Id": "91f75ba4-3ae6-4ce4-8667-7b0ee2a20f26",
+                "name": "food",
+                "convertToArray": false,
+                "typeDefinition": {
+                    "Id": "cd426f6b-7b75-4648-a738-821ab4194e93",
+                    "name": "food",
+                    "typeName": "Food",
+                    "isArray": false,
+                    "isReferenceType": true,
+                    "isObject": false
+                }
+            },
+            {
+                "Id": "40b78497-5112-4497-8441-ae6e4e17874f",
                 "name": "type",
+                "convertToArray": false,
                 "typeDefinition": {
                     "Id": "68c86ae1-f150-41d2-a01e-7bb439ec6e29",
                     "name": "string",
@@ -38,11 +95,12 @@
     "methods": [],
     "properties": [
         {
-            "Id": "fa5eacd4-0e3d-4902-a43b-659748f9895e",
+            "Id": "fd73b422-b417-42a2-9f96-6200f634053d",
             "name": "type",
             "isGetter": true,
-            "isSetter": false,
+            "isSetter": true,
             "isStatic": false,
+            "convertToArray": false,
             "typeDefinition": {
                 "Id": "68c86ae1-f150-41d2-a01e-7bb439ec6e29",
                 "name": "string",
@@ -51,7 +109,21 @@
                 "isReferenceType": false,
                 "isObject": false
             },
-            "parameters": []
+            "parameters": [
+                {
+                    "Id": "48536d5a-a488-4e5a-94fc-628a5bf998c2",
+                    "name": "value",
+                    "convertToArray": false,
+                    "typeDefinition": {
+                        "Id": "68c86ae1-f150-41d2-a01e-7bb439ec6e29",
+                        "name": "string",
+                        "typeName": "String",
+                        "isArray": false,
+                        "isReferenceType": false,
+                        "isObject": false
+                    }
+                }
+            ]
         }
     ]
 }
